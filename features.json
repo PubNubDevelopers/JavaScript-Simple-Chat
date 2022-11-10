@@ -1,0 +1,8 @@
+{
+    "features": [
+       "Send a message",
+       "Send 5 messages",
+       "Open the app in another tab and receive a message",
+       "Receive 3 messages"
+    ]
+}

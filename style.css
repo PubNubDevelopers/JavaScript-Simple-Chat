@@ -1,0 +1,79 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+.code-block {
+    display: none;
+}
+
+.flex-child:first-child {
+    flex: 2;
+    margin-right: 10px;
+} 
+
+@media (min-width: 768px) {
+    .code-block {
+        display: block;
+    }
+}
+
+html * {
+    font-family: 'Poppins';
+}
+
+input {
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px 15px 6px 15px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-size: medium;
+}
+
+
+h1 {
+    margin: 0;
+}
+
+.messageYou {
+    width: 90%;
+    padding: 6px 20px;
+    margin: 8px;
+    background-color: #f0f3f7;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    box-sizing: border-box;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    float: right;
+}
+
+.messageThem {
+    width: 90%;
+    padding: 6px 20px;
+    margin: 8px;
+    background-color: #f3f3f3;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    float: left;
+}
+
+.youText {
+    float: right;
+}
+
+.messageTime {
+    font-size: x-small;
+    float: right;
+}

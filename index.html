@@ -1,35 +1,121 @@
-<!-- Chat in 10 lines of JavaScript code using PubNub JavaScript V4 SDK -->
+<!--  Chat in fewer than 10 lines of JavaScript code using PubNub JavaScript SDK -->
+<!--  This demo also contains helper and UI code.  For beginning of PubNub code, scroll down to "Begin count:..." -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" type="image/png" href="icon.png">
-        <meta name="description" content="Example of a JavaScript chat app using PubNub JavaScript V4 SDK.">
-  		<meta name="keywords" content="JavaScript,PubNub,Chat,chat-room,chatting,SDK,PubSub-sdk,tutorial">
-        <meta name="author" content="Chandler Mayo">
-        <title>JavaScript Chat | PubNub</title>
-    </head>
-    <body>
-        <p><a href="https://www.pubnub.com/?devrel_pbpn=javascript-chat"><img src="https://d2c805weuec6z7.cloudfront.net/Powered_By_PubNub.png" alt="Powered By PubNub" width="150"></a><p>
-        <p>Enter chat and press enter.</p>
-        <input id="input" placeholder="Your Message Here"/>
-        <p>Chat Output:<p>
-        <div id="box"></div>
 
-        <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.23.0.min.js"></script>
-        <script>(function(){
-        	var pubnub = new PubNub({publishKey : 'demo',subscribeKey : 'demo'}); // Your PubNub keys here. Get them from https://dashboard.pubnub.com.
-        	var box = document.getElementById("box"), input = document.getElementById("input"), channel = 'chat';
-        	pubnub.subscribe({channels: [channel]}); // Subscribe to a channel.
-        	pubnub.addListener({message: function(m) {
-               	box.innerHTML = (''+m.message).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; // Add message to page.
-            }});
-        	input.addEventListener('keypress', function (e) {
-        	    (e.keyCode || e.charCode) === 13 && pubnub.publish({ // Publish new message when enter is pressed. 
-        	        channel : channel, message : input.value, x : (input.value='')
-        	    });
-        	});
-        })();</script>
-   </body>
+<head>
+  <link rel="stylesheet" href="./style.css" />
+  <!--  Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="description" content="Example of a JavaScript chat app using the PubNub JavaScript SDK">
+  <meta name="keywords" content="JavaScript,PubNub,Chat,chat-room,chatting,SDK,PubSub-sdk,tutorial">
+  <meta name="author" content="Chandler Mayo">
+  <meta name="author" content="Darryn Campbell">
+  <title>JavaScript Chat Demo in 10 lines of code | PubNub</title>
+  <!--  Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <!--  Interactive demo only -->
+  <script type="text/javascript"
+    src="https://darryncampbell-pubnub.github.io/pubnub-demo-utils/js/interactive-demo-interface/v2/demo-interface.js"
+    defer></script>
+</head>
+
+<body>
+
+  <H1>Chat in 10 lines of JavaScript. Powered by PubNub</H1>
+
+  <div class="flex-container">
+
+    <div class="flex-child">
+      <input id="input" placeholder="Type your message and press enter" />
+      <div id="outputDiv">
+      </div>
+    </div>
+
+    <div class="flex-child code-block">
+      <pre><code class="javascript">// Open 2 tabs to chat between windows
+        
+// Get your PubNub keys from admin.pubnub.com
+var pubnub = new PubNub(
+  {publishKey: 'demo', subscribeKey: 'demo', userId: 'user1'});
+var channel = '10chat';
+
+// Subscribe to a channel and add listener
+pubnub.subscribe({channels: [channel]}); 
+pubnub.addListener({
+  message: function (m) {
+    box.innerHTML = newRow(m.message, m.publisher, id)
+     + box.innerHTML;
+  }
+});
+
+// Publish new message when enter is pressed. 
+input.addEventListener('keypress', function (e) {
+  (e.keyCode || e.charCode) === 13 && pubnub.publish({ 
+    channel: channel, message: input.value, x: (input.value = '')
+  });
+});
+</code></pre>
+    </div>
+
+  </div>
+
+  <!--  Begin count: lines of code to create a chat app with the PubNub SDK (count ;)-->
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.2.0.min.js"></script>
+  <script>var countTx = 0, countRx = 0, id = 'user_' + Math.random();
+    (function () {
+      var pubnub = new PubNub({publishKey: 'demo', subscribeKey: 'demo', userId: id}); // Your PubNub keys here. Get them from https://dashboard.pubnub.com.
+      var box = document.getElementById("outputDiv"), input = document.getElementById("input"), channel = '10chat';
+      pubnub.subscribe({channels: [channel]}); // Subscribe to a channel.
+      pubnub.addListener({
+        message: function (m) {
+          box.innerHTML = newRow(m.message, m.publisher) + box.innerHTML;
+        }
+      });
+      input.addEventListener('keypress', function (e) {
+        (e.keyCode || e.charCode) === 13 && pubnub.publish({ // Publish new message when enter is pressed. 
+          channel: channel, message: input.value, x: (input.value = '')
+        });
+      });
+    })();
+    // End count: lines of code to create a chat app with the PubNub SDK. 
+
+    hljs.highlightAll();
+
+    function newRow(m, publisher) {
+      var date = "<br><span class='messageTime'>" + new Date().toLocaleString() + "</span>";
+      var you = "";
+      var messageClass = "messageThem";
+      var message = ('' + m).replace(/[<>]/g, '');
+      console.log(id);
+
+      if (id === publisher) {
+        you = "<span class='youText'> (You)</span>";
+        messageClass = "messageYou"
+        // Interactive Demo only
+        actionCompleted({action: 'Send a message'});
+        countTx++;
+        if (countTx == 5) {
+          // Interactive Demo only
+          actionCompleted({action: 'Send 5 messages', debug: true});
+        }
+      }
+      else {
+        // Interactive Demo only
+        actionCompleted({action: 'Open the app in another tab and receive a message'});
+        countRx++;
+        if (countRx == 3) {
+          // Interactive Demo only
+          actionCompleted({action: 'Receive 3 messages', debug: true});
+        }
+      }
+      return "<div class='" + messageClass + "'>" + message + you + date + "</div>"
+    }
+  </script>
+</body>
+
 </html>
