@@ -41,22 +41,26 @@
         
 // Get your PubNub keys from admin.pubnub.com
 var pubnub = new PubNub(
-  {publishKey: 'demo', subscribeKey: 'demo', userId: 'user1'});
+  {publishKey: 'demo', subscribeKey: 'demo', 
+   userId: 'user1'});
 var channel = '10chat';
 
 // Subscribe to a channel and add listener
 pubnub.subscribe({channels: [channel]}); 
 pubnub.addListener({
   message: function (m) {
-    box.innerHTML = newRow(m.message, m.publisher, id)
+    box.innerHTML = newRow(m.message, 
+     m.publisher, id)
      + box.innerHTML;
   }
 });
 
 // Publish new message when enter is pressed. 
 input.addEventListener('keypress', function (e) {
-  (e.keyCode || e.charCode) === 13 && pubnub.publish({ 
-    channel: channel, message: input.value, x: (input.value = '')
+  (e.keyCode || e.charCode) === 13 && 
+   pubnub.publish({ 
+    channel: channel, message: input.value, 
+     x: (input.value = '')
   });
 });
 </code></pre>
