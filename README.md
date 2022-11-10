@@ -1,20 +1,65 @@
-# JavaScript Simple Chat
+# JavaScript Simple Chat Demo in fewer than 10 lines of code
 
-This project is a demo showing how you can create a chat app in only 10 lines of code using PubNub's V4 JavaScript SDK. [View the Chat Code](https://github.com/PubNubDevelopers/JavaScript-Simple-Chat/blob/master/chat.html).
+> How easy is it to create a chat app with the PubNub SDK? This demo shows how you can implement a chat application in fewer than 10 lines of JavaScript code.
 
-### [Try the Chat Demo](https://javascript-chat.com)
+PubNub allows you to create chat apps from scratch or add them to your existing applications. You can focus on creating the best user experience while PubNub takes care of scalability, reliability, security, and global legislative compliance.
 
-## What is PubNub?
+Create 1:1 private chat rooms, group chats, or chats for large scale events, for a variety of use cases.
 
-PubNub’s primary product is a [realtime publish/subscribe messaging API](https://www.pubnub.com/products/realtime-messaging/) built on a [global Data Stream Network](https://www.pubnub.com/products/global-data-stream-network/). Messages sent with PubNub are delivered in under 0.25 seconds and PubNub supports over [70 SDKs](https://www.pubnub.com/docs). PubNub provides the secure, scalable, and reliable infrastructure to power any realtime application.
+## Demo
 
-## Build Your Own JavaScript Chat
+A hosted version of this demo can be found at https://pubnubdevelopers.github.io/JavaScript-Simple-Chat 
 
-Want to learn more about this project or build a clone from scratch? Check out the tutorial (coming soon).
+![Screenshot](https://raw.githubusercontent.com/PubNubDevelopers/JavaScript-Simple-Chat/master/media/screenshot.png)
 
-<a href="https://www.pubnub.com/?devrel_gh=JavaScript-Simple-Chat">
-    <img alt="PubNub Blog" src="https://i.imgur.com/aJ927CO.png" width=260 height=98/>
+## Features
+
+* Communicates over the PubNub network - send a receive chat messages using the JavaScript SDK
+
+## Installing / Getting started
+
+To run this project yourself you will need a PubNub account.
+
+### Requirements
+- [PubNub Account](#pubnub-account) (*Free*)
+
+<a href="https://dashboard.pubnub.com/signup">
+	<img alt="PubNub Signup" src="https://i.imgur.com/og5DDjf.png" width=260 height=97/>
 </a>
 
 
+### Get Your PubNub Keys
+
+1. You’ll first need to sign up for a [PubNub account](https://dashboard.pubnub.com/signup/). Once you sign up, you can get your unique PubNub keys from the [PubNub Developer Portal](https://admin.pubnub.com/).
+
+1. Sign in to your [PubNub Dashboard](https://admin.pubnub.com/).
+
+1. Click Apps, then **Create New App**.
+
+1. Give your app a name, and click **Create**.
+
+1. Click your new app to open its settings, then click its keyset.
+
+1. Copy the Publish and Subscribe keys and paste them into your app as specified in the next step.
+
+### Building and Running
+
+1. You'll need to run the following commands from your terminal.
+
+1. Clone the GitHub repository.
+
+	```bash
+	git clone https://github.com/PubNubDevelopers/JavaScript-Simple-Chat.git
+	```
+1. Navigate to the application directory.
+
+	```bash
+	cd JavaScript-Simple-Chat
+	```
+
+1. Add your pub/sub keys to `index.html`, replacing the existing `'demo'` keys
+
+
+## Contributing
+Please fork the repository if you'd like to contribute. Pull requests are always welcome. 
 
