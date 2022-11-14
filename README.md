@@ -8,7 +8,7 @@ Create 1:1 private chat rooms, group chats, or chats for large scale events, for
 
 ## Demo
 
-A hosted version of this demo can be found at https://pubnubdevelopers.github.io/JavaScript-Simple-Chat 
+A hosted version of this demo can be found at https://pubnub.com/demos/10-line-chat/ 
 
 ![Screenshot](https://raw.githubusercontent.com/PubNubDevelopers/JavaScript-Simple-Chat/master/media/screenshot.png)
 
