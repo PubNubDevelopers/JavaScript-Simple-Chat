@@ -30,10 +30,7 @@
 
   <div class="flex-container">
 
-    <div class="flex-child">
-      <input id="input" placeholder="Type your message and press enter" />
-      <div id="outputDiv">
-      </div>
+    <div id="outputDiv" class="flex-child">
     </div>
 
     <div class="flex-child code-block">
@@ -49,12 +46,10 @@ var channel = '10chat';
 pubnub.subscribe({channels: [channel]}); 
 pubnub.addListener({
   message: function (m) {
-    box.innerHTML = newRow(m.message, 
-     m.publisher, id)
-     + box.innerHTML;
+    box.innerHTML += newRow(m.message, 
+     m.publisher);
   }
 });
-
 // Publish new message when enter is pressed. 
 input.addEventListener('keypress', function (e) {
   (e.keyCode || e.charCode) === 13 && 
@@ -67,6 +62,12 @@ input.addEventListener('keypress', function (e) {
     </div>
 
   </div>
+  <input id="input" placeholder="Type your message and press enter" />
+
+  
+  
+
+
 
   <!--  Begin count: lines of code to create a chat app with the PubNub SDK (count ;)-->
   <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.2.0.min.js"></script>
@@ -77,11 +78,12 @@ input.addEventListener('keypress', function (e) {
       pubnub.subscribe({channels: [channel]}); // Subscribe to a channel.
       pubnub.addListener({
         message: function (m) {
-          box.innerHTML = newRow(m.message, m.publisher) + box.innerHTML;
+          box.innerHTML += newRow(m.message, m.publisher);
+          box.scrollTop = box.scrollHeight;
         }
       });
       input.addEventListener('keypress', function (e) {
-        (e.keyCode || e.charCode) === 13 && pubnub.publish({ // Publish new message when enter is pressed. 
+        (e.keyCode || e.charCode) === 13 && input.value != "" && pubnub.publish({ // Publish new message when enter is pressed. 
           channel: channel, message: input.value, x: (input.value = '')
         });
       });
@@ -95,7 +97,6 @@ input.addEventListener('keypress', function (e) {
       var you = "";
       var messageClass = "messageThem";
       var message = ('' + m).replace(/[<>]/g, '');
-      console.log(id);
 
       if (id === publisher) {
         you = "<span class='youText'> (You)</span>";

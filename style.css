@@ -14,6 +14,12 @@
 .flex-child:first-child {
     flex: 2;
     margin-right: 10px;
+    margin-top:9px;
+    background-color: rgb(249, 249, 249);
+    flex-direction:column;
+    max-height: 510px;
+    height:510px;
+    overflow:auto;
 } 
 
 @media (min-width: 768px) {
@@ -28,7 +34,6 @@ html * {
 
 input {
     width: 100%;
-    margin-top: 8px;
     padding: 6px 15px 6px 15px;
     box-sizing: border-box;
     border-radius: 12px;
@@ -44,7 +49,7 @@ h1 {
     width: 90%;
     padding: 6px 20px;
     margin: 8px;
-    background-color: #f0f3f7;
+    background-color: #c2d3e9;
     border-style: solid;
     border-color: black;
     border-width: 2px;
