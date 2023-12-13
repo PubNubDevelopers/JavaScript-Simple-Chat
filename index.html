@@ -42,14 +42,14 @@ var pubnub = new PubNub(
    userId: 'user1'});
 var channel = '10chat';
 
-// Subscribe to a channel and add listener
-pubnub.subscribe({channels: [channel]}); 
+// Add a listener to a channel and subscribe to it
 pubnub.addListener({
   message: function (m) {
     box.innerHTML += newRow(m.message, 
      m.publisher);
   }
 });
+pubnub.subscribe({channels: [channel]}); 
 // Publish new message when enter is pressed. 
 input.addEventListener('keypress', function (e) {
   (e.keyCode || e.charCode) === 13 && 
@@ -75,13 +75,13 @@ input.addEventListener('keypress', function (e) {
     (function () {
       var pubnub = new PubNub({publishKey: 'demo', subscribeKey: 'demo', userId: id}); // Your PubNub keys here. Get them from https://dashboard.pubnub.com.
       var box = document.getElementById("outputDiv"), input = document.getElementById("input"), channel = '10chat';
-      pubnub.subscribe({channels: [channel]}); // Subscribe to a channel.
       pubnub.addListener({
         message: function (m) {
           box.innerHTML += newRow(m.message, m.publisher);
           box.scrollTop = box.scrollHeight;
         }
       });
+      pubnub.subscribe({channels: [channel]}); // Subscribe to a channel.
       input.addEventListener('keypress', function (e) {
         (e.keyCode || e.charCode) === 13 && input.value != "" && pubnub.publish({ // Publish new message when enter is pressed. 
           channel: channel, message: input.value, x: (input.value = '')
